@@ -11,7 +11,7 @@ class AdminController extends Controller
     public function index()
     {    
         $publishedfilms = Film::all();
-        $allgenres = Genre::all();
+        $allgenres = Genre::all()->sortBy('name');
         return view('admin.index',compact('publishedfilms','allgenres'));
     }
 
