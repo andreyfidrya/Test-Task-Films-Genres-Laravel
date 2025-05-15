@@ -22,5 +22,5 @@ class FilmGenreSeeder extends Seeder
         'genre_id' => $faker->randomElement(\App\Models\Genre::pluck('id')),
         ]);
         }
-            }
+    }
 }

@@ -12,12 +12,37 @@ class GenreSeeder extends Seeder
 {
     public function run(): void
     {
-        $faker = Faker::create();
-
-        foreach (range(1, 10) as $index) {
-            Genre::create([
-                'name' => $faker->name,                
-            ]);
-        }
+        Genre::insert([
+            [
+                'name' => 'action'                
+            ],
+            [
+                'name' => 'comedy'                
+            ],
+            [
+                'name' => 'musical'                
+            ],
+            [
+                'name' => 'drama'                
+            ],
+            [
+                'name' => 'documentary'                
+            ],
+            [
+                'name' => 'fantasy'                
+            ],
+            [
+                'name' => 'horror'                
+            ],
+            [
+                'name' => 'science fiction'                
+            ],
+            [
+                'name' => 'thriller'                
+            ],
+            [
+                'name' => 'romance'                
+            ],
+        ]);
     }
 }
