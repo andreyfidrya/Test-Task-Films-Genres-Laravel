@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Home Page</title>
+        <title>Edit a Genre</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -17,10 +17,9 @@
         
     </head>
     <body class="antialiased">       
-            <h2>Add a Genre</h2>
+            <h2>Edit a Genre</h2>
             Link to <a href="{{route('admin.index')}}">Admin Page</a>
                 <form class="form-new-product form-style-1" action="{{route('admin.genre.update')}}" method="POST" enctype="multipart/form-data">
-                @csrf
                     @csrf
                     @method('PUT')
                     <input type="hidden" name="id" value="{{$genre->id}}" />

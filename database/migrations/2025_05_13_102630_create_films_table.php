@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->enum('publication_status',['published','unpublished'])->default('unpublished');
-            $table->string('link')->default('posters/default-image.jpg');
+            $table->string('link')->default('default-image.jpg');
             $table->timestamps();
         });
     }

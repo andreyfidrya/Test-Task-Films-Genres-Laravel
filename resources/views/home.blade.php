@@ -35,11 +35,9 @@
                                 {{ $genre->name }};<br>
                             @endforeach
                             </td>
-                            @if($film->link)                    
+                                                
                             <td><img src="{{asset('posters')}}/{{$film->link}}"style="max-width:150px"></td>
-                            @else
-                            <td><img src="{{asset('posters')}}/default-image.jpg"style="max-width:150px"></td>
-                            @endif
+                            
                         </tr>                
                     @endforeach
                 </tbody>

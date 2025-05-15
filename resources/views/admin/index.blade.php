@@ -20,7 +20,7 @@
             <h2>Admin Page</h2>
             Link to <a href="{{route('home')}}">Home Page</a>
             <h4>All Films</h4>
-            <a href="#" class="btn btn-success">Add a Film</a>
+            <a href="{{route('admin.film.add')}}" class="btn btn-success">Add a Film</a>
             <table class="table table-bordered border-primary">
                 <thead>
                     <tr>
@@ -41,14 +41,16 @@
                             @endforeach
                             </td>
                             <td>{{$film->publication_status}}</td>
-                            @if($film->link)                    
+                                                
                             <td><img src="{{asset('posters')}}/{{$film->link}}"style="max-width:150px"></td>
-                            @else
-                            <td><img src="{{asset('posters')}}/default-image.jpg"style="max-width:150px"></td>
-                            @endif
+                            
                             <td>
-                                <a href="#" class="btn btn-info">Edit</a>
-                                <a href="#" class="btn btn-danger">Delete</a>                                
+                                <a href="{{route('admin.film.edit',['id'=>$film->id])}}" class="btn btn-info">Edit</a>
+                                <form method="post" action="{{ route('admin.film.delete', [ $film->id ]) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-sm btn-danger">Delete</button>
+                                </form>                                
                                 @if($film->publication_status == 'unpublished')
                                     <a href="#" class="btn btn-success">Publish</a>  
                                 @endif
@@ -76,7 +78,7 @@
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-sm btn-danger">Delete</button>
-                            </form>                      
+                                </form>                      
                             </td>
                         </tr>                
                     @endforeach
