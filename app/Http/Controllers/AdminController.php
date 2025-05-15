@@ -41,8 +41,9 @@ class AdminController extends Controller
     public function genre_update(Request $request)
     {
         $request->validate([
-            'name' => 'required|min:3|max:25',
-            'image' => 'mimes:png,jpj,jpeg|max:2040'            
+            'name' => 'required|min:3|max:25',            
+            'image' => 'mimes:png,jpj,jpeg|max:2040',
+            'genres' => [ 'required', 'array', 'min:1']            
         ]);
 
         $genre = Genre::find($request->id);
@@ -68,7 +69,9 @@ class AdminController extends Controller
     public function film_store(Request $request){
         
         $request->validate([
-            'name' => 'required|min:3|max:25',            
+            'name' => 'required|min:3|max:25', 
+            'image' => 'mimes:png,jpj,jpeg|max:2040',
+            'genres' => [ 'required', 'array', 'min:1']           
         ]);
 
         $film = new Film();
@@ -101,7 +104,9 @@ class AdminController extends Controller
     public function film_update(Request $request){
         
         $request->validate([
-            'name' => 'required|min:3|max:25',            
+            'name' => 'required|min:3|max:25',
+            'image' => 'mimes:png,jpj,jpeg|max:2040',
+            'genres' => [ 'required', 'array', 'min:1']            
         ]);
 
         $film = Film::find($request->id);        

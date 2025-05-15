@@ -47,6 +47,7 @@
                         @endforeach                                                 
                     </select>                        
                 </fieldset>
+                @error('genres') <span class="alert alert-danger text-center">{{$message}} </span> @enderror
                     
                 <fieldset>
                     <div>
