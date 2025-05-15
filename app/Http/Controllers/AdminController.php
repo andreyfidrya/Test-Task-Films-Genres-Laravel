@@ -134,4 +134,13 @@ class AdminController extends Controller
         $film->delete();
         return redirect()->route('admin.index');
     }
+
+    public function film_publish($id)
+    {
+        $film = Film::find($id);
+        $film->publication_status = 'published';
+        $film->save();
+
+        return redirect()->route('admin.index');
+    }
 }

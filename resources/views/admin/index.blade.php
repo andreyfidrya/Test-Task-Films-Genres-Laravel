@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Home Page</title>
+        <title>Admin Page</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -46,13 +46,19 @@
                             
                             <td>
                                 <a href="{{route('admin.film.edit',['id'=>$film->id])}}" class="btn btn-info">Edit</a>
+                                
                                 <form method="post" action="{{ route('admin.film.delete', [ $film->id ]) }}">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-sm btn-danger">Delete</button>
+                                <button class="btn btn btn-danger">Delete</button>
                                 </form>                                
+                                
                                 @if($film->publication_status == 'unpublished')
-                                    <a href="#" class="btn btn-success">Publish</a>  
+                                <form method="post" action="{{ route('admin.film.publish', [ $film->id ]) }}">
+                                @csrf
+                                @method('PUT')
+                                <button class="btn btn btn-success">Publish</button>
+                                </form>  
                                 @endif
                             </td>
                         </tr>                

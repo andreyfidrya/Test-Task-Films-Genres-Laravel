@@ -30,3 +30,5 @@ Route::post('/admin/film/store',[AdminController::class,'film_store'])->name('ad
 Route::get('/admin/film/edit/{id}',[AdminController::class,'film_edit'])->name('admin.film.edit');
 Route::put('/admin/film/update',[AdminController::class,'film_update'])->name('admin.film.update');
 Route::delete('/admin/film/{id}/delete',[AdminController::class,'film_delete'])->name('admin.film.delete');
+
+Route::put('/admin/film/{id}/publish-film', [AdminController::class, 'film_publish'])->name('admin.film.publish');
