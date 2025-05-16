@@ -24,8 +24,9 @@ class FilmController extends Controller
         }
     }
 
-    public function show(Film $film)
+    public function show($id)
     {
+        $film = Film::with('genres')->findOrFail($id);
         return new FilmResource ($film);
     }
 }
