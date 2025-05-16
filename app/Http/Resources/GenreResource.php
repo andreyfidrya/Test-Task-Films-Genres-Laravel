@@ -18,6 +18,7 @@ class GenreResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            //'films' => GenreResource::collection($this->whenLoaded('films')),
         ];
     }
 }

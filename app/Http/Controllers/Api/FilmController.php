@@ -12,7 +12,6 @@ class FilmController extends Controller
 {
     public function index()
     {
-        //$films = DB::table('films')->paginate(3);
         $films = Film::with('genres')->paginate(3);
         if($films)
         {

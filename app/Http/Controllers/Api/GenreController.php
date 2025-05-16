@@ -6,6 +6,7 @@ use App\Models\Genre;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\GenreResource;
+use App\Http\Resources\ShowgenreResource;
 use Illuminate\Support\Facades\DB;
 
 class GenreController extends Controller
@@ -23,10 +24,15 @@ class GenreController extends Controller
         }
     }
 
-    public function show(Genre $genre)
+    public function show($id)
     {
-        $genre->load('films')->paginate(3);
+        $genre = Genre::findOrFail($id); 
+        $films = $genre->films()->paginate(2);
+        $genre->setRelation('films', $films);           
+
+        //$genre->load('films');        
+        //return response()->json($genre); 
         
-        return response()->json($genre);        
+        return new ShowgenreResource($genre->setRelation('films', $films));
     }
 }
