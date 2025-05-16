@@ -15,11 +15,19 @@ class GenreController extends Controller
         $genres = DB::table('genres')->paginate(3);
         if($genres)
         {
-            return response()->json($genres, 200);
+            return GenreResource::collection($genres);
         }
         else
         {
             return response()->json(['message' => 'No records are available'], 200);
         }
+    }
+
+    public function show(Genre $genre)
+    {
+        $genre->load('films');
+        
+        return response()->json($genre);
+        //return new GenreResource($genre);
     }
 }
