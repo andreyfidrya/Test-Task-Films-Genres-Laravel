@@ -12,7 +12,8 @@ class FilmResource extends JsonResource
     {
         return [
             'name' => $this->name,
-            'link' => $this->link,                       
+            'link' => $this->link,  
+            'genres' => GenreResource::collection($this->whenLoaded('genres')),                     
         ];
     }
 }
