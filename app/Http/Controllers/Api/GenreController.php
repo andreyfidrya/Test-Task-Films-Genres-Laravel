@@ -25,9 +25,8 @@ class GenreController extends Controller
 
     public function show(Genre $genre)
     {
-        $genre->load('films');
+        $genre->load('films')->paginate(3);
         
-        return response()->json($genre);
-        //return new GenreResource($genre);
+        return response()->json($genre);        
     }
 }
