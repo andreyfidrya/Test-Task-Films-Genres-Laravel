@@ -13,6 +13,21 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+        <style>
+        table {
+        width: 100%;
+        border-collapse: collapse;
+        }
+        th, td {
+        padding: 10px;
+        border: 1px solid #ccc;
+        text-align: left;
+        }
+        th {
+        background-color: #f2f2f2;
+        }
+        </style>
         
     </head>
     <body class="antialiased">
@@ -42,7 +57,41 @@
                     @endforeach
                 </tbody>
             </table>
+
+            <h1>Posts from API</h1>
+            <table id="postsTable">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>User ID</th>
+                    <th>Title</th>
+                    <th>Body</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Data will be inserted here -->
+                </tbody>
+            </table>
         
         </div>
     </body>
 </html>
+
+<script>
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(response => response.json())
+      .then(posts => {
+        const tbody = document.querySelector('#postsTable tbody');
+        posts.forEach(post => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${post.id}</td>
+            <td>${post.userId}</td>
+            <td>${post.title}</td>
+            <td>${post.body}</td>
+          `;
+          tbody.appendChild(row);
+        });
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  </script>

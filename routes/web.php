@@ -16,7 +16,7 @@ use App\Http\Controllers\AdminController;
 
 Route::get('/',[HomeController::class,'index'])->name('home.index');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 Route::get('/admin/genre/add',[AdminController::class,'add_genre'])->name('admin.genre.add');
