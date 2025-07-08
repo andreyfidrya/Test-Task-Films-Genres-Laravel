@@ -58,14 +58,13 @@
                 </tbody>
             </table>
 
-            <h1>Posts from API</h1>
+            <h1>Albums from API</h1>
             <table id="postsTable">
                 <thead>
                 <tr>
                     <th>ID</th>
                     <th>User ID</th>
-                    <th>Title</th>
-                    <th>Body</th>
+                    <th>Title</th>                    
                 </tr>
                 </thead>
                 <tbody>
@@ -78,17 +77,16 @@
 </html>
 
 <script>
-    fetch('https://jsonplaceholder.typicode.com/posts')
+    fetch('https://jsonplaceholder.typicode.com/albums')
       .then(response => response.json())
-      .then(posts => {
+      .then(albums => {
         const tbody = document.querySelector('#postsTable tbody');
-        posts.forEach(post => {
+        albums.forEach(album => {
           const row = document.createElement('tr');
           row.innerHTML = `
-            <td>${post.id}</td>
-            <td>${post.userId}</td>
-            <td>${post.title}</td>
-            <td>${post.body}</td>
+            <td>${album.id}</td>
+            <td>${album.userId}</td>
+            <td>${album.title}</td>            
           `;
           tbody.appendChild(row);
         });
