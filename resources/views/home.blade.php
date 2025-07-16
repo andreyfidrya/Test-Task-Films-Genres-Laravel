@@ -57,6 +57,27 @@
                     @endforeach
                 </tbody>
             </table>
+<h1>USD Exchange Rate (NBU)</h1>
+  <div id="usd-info">Loading...</div>
+
+  <script>
+    fetch('https://bank.gov.ua/NBUStatService/v1/statdirectory/dollar_info?json')
+      .then(response => response.json())
+      .then(data => {
+        // Assuming only one item is returned in the array
+        const usd = data[0];
+        const container = document.getElementById('usd-info');
+        container.innerHTML = `
+          <p><strong>Currency Code:</strong> ${usd.cc}</p>
+          <p><strong>Exchange Rate:</strong> ${usd.rate}</p>
+          <p><strong>Date:</strong> ${usd.exchangedate}</p>
+        `;
+      })
+      .catch(error => {
+        document.getElementById('usd-info').innerText = 'Failed to load data.';
+        console.error('Error fetching data:', error);
+      });
+</script>
 
             <h1>Albums from API</h1>
             <table id="postsTable">
@@ -93,3 +114,5 @@
       })
       .catch(error => console.error('Error fetching data:', error));
   </script>
+
+  
